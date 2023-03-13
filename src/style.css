@@ -18,7 +18,7 @@ header {
   display: flex;
   justify-content: space-around;
   gap: 5rem;
-  font-size: larger;
+  font-size: 25px;
 }
 
 .nav-items li {
@@ -34,4 +34,26 @@ header {
 #logo {
   content: url('./assets/logo.png');
   width: 5rem;
+}
+
+footer {
+  position: fixed;
+  width: 100%;
+  background-color: rgb(8, 7, 7);
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+}
+
+.copyrights {
+  color: antiquewhite;
+  font-size: 25px;
+  word-spacing: 8px;
+}
+
+.creator-direct {
+  text-decoration: none;
+  color: brown;
 }
