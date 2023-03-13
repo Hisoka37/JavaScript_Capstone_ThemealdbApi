@@ -1,1 +1,37 @@
- 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  gap: 12rem;
+  margin: 1rem 3rem;
+  text-align: center;
+  align-items: center;
+}
+
+.nav-items {
+  display: flex;
+  justify-content: space-around;
+  gap: 5rem;
+  font-size: larger;
+}
+
+.nav-items li {
+  list-style: none;
+  text-decoration: none;
+}
+
+.nav-items li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#logo {
+  content: url('./assets/logo.png');
+  width: 5rem;
+}
