@@ -12,6 +12,7 @@ header {
   margin: 1rem 3rem;
   text-align: center;
   align-items: center;
+  color: brown;
 }
 
 .nav-items {
@@ -56,4 +57,91 @@ footer {
 .creator-direct {
   text-decoration: none;
   color: brown;
+}
+
+.pop-container {
+  /* border: 1px solid blueviolet; */
+  width: 80%;
+  background-color: azure;
+  height: fit-content;
+  margin-top: -5rem;
+  position: absolute;
+  z-index: 1;
+  padding: 1rem;
+}
+
+.pop-up {
+  display: flex;
+  justify-content: center;
+  border: 1px solid;
+  width: 75%;
+  margin: 0 auto;
+}
+
+ul {
+  list-style: none;
+}
+
+.close-btn {
+  font-size: xx-large;
+  position: relative;
+  right: -70rem;
+  top: 5rem;
+  cursor: pointer;
+}
+
+.meal-img {
+  height: 20rem;
+  width: 75%;
+  border: solid 1px;
+  margin: 2rem auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* .pop-info {
+  border: 1px solid red;
+} */
+
+.pop-info h3 {
+  text-align: center;
+}
+
+.meal-info {
+  /* border: 1px solid blue; */
+  height: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15rem;
+  font-size: large;
+}
+
+.pop-info h4 {
+  text-align: center;
+}
+
+.comments {
+  /* border: 1px solid blue; */
+  height: 8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: flex-start;
+  margin-left: 20rem;
+  width: 50%;
+}
+
+.add-comment {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  width: 50%;
+  margin-top: 2rem;
+  margin-left: 20rem;
 }
