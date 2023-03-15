@@ -19,8 +19,8 @@ const displayModal = async (idMeal) => {
         <div class="item-info">
           <img src=${
   meal.meals[0].strMealThumb
-} alt="Thumbnail" class="modal-popup-img">  
-          <h3 class="meal-popup-item">${meal.meals[0].strMeal}</h3>
+} alt="Thumbnail" class="popup-img">  
+          <h3 class="popup-title">${meal.meals[0].strMeal}</h3>
           <div class="info-links">
             <button> <a href="${
   meal.meals[0].strSource

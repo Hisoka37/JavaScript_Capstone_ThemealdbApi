@@ -32,6 +32,12 @@ header {
   text-decoration: none;
 }
 
+.info-links a {
+  text-decoration: none;
+  color: #e1362c;
+  background-color: transparent;
+}
+
 .nav-items li a {
   text-decoration: none;
   color: inherit;
@@ -40,7 +46,6 @@ header {
 #logo {
   content: url('./assets/logo.png');
   width: 5rem;
-  
 }
 
 .copyrights {
@@ -58,7 +63,8 @@ header {
   /* border: 1px solid blueviolet; */
   width: 80%;
   background-color: azure;
-  height: fit-content;
+
+  /* height: fit-content; */
   margin-top: -5rem;
   position: absolute;
   z-index: 1;
@@ -77,11 +83,11 @@ ul {
   list-style: none;
 }
 
-.close-btn {
+.close {
+  float: right;
   font-size: xx-large;
   position: relative;
-  right: -70rem;
-  top: 5rem;
+  top: 1rem;
   cursor: pointer;
 }
 
@@ -97,6 +103,13 @@ ul {
 /* .pop-info {
   border: 1px solid red;
 } */
+
+h3 {
+  font-size: 2em;
+  padding: 2em 0 1em 0;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
 
 .pop-info h3 {
   text-align: center;
@@ -135,11 +148,13 @@ ul {
   text-align: center;
   flex-direction: column;
   gap: 0.5rem;
-  align-items: flex-start;
+
+  /* align-items: flex-start; */
   width: 50%;
   margin-top: 2rem;
   margin-left: 20rem;
 }
+
 main {
   min-height: 100%;
   padding-bottom: 10%;
@@ -248,12 +263,9 @@ footer {
   display: none;
 }
 
-.logo {
-  width: 10rem;
-}
-
-.close {
-  float: right;
+.popup-img {
+  width: 40%;
+  border-radius: 10px;
 }
 
 .modal-container {
@@ -261,8 +273,8 @@ footer {
   flex-direction: column;
   align-items: center;
   z-index: 10;
-  width: 60%;
-  height: 90vh;
+  width: 90%;
+  height: 95%;
   padding: 30px 50px;
   position: fixed;
   top: 50%;
@@ -270,7 +282,7 @@ footer {
   transform: translate(-50%, -50%);
   border-radius: 10px;
   overflow-y: scroll;
-  background-color: #e5e5e5;
+  background-color: antiquewhite;
 }
 
 .item-info {
@@ -279,8 +291,8 @@ footer {
   align-items: center;
 }
 
-.meal-popup-item{
-  font-size: 20px;
+.popup-title {
+  font-size: 2rem;
 }
 
 .meal-popup-description {
@@ -290,13 +302,6 @@ footer {
   font-size: 1.1em;
   padding: 2.5em 0;
   gap: 12px;
-}
-
-h3 {
-  font-size: 2em;
-  padding: 2em 0 1em 0;
-  font-weight: bold;
-  letter-spacing: 2px;
 }
 
 .meal-popup-description b {
@@ -310,12 +315,6 @@ h3 {
   background-color: white;
 }
 
-.info-links a {
-  text-decoration: none;
-  color: #e1362c;
-  background-color: transparent;
-}
-
 .meal-popup-description ul {
   list-style-type: circle;
   display: flex;
@@ -327,4 +326,9 @@ h3 {
   letter-spacing: 3px;
   font-style: italic;
   color: #000;
+}
+
+.meal-popup-description p {
+  font-size: medium;
+  text-align: center;
 }

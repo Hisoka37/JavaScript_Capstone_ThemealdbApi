@@ -1,7 +1,7 @@
 import './style.css';
-import getMeals from './Modules/getmeals.js';
-import displayModal from './Modules/popUp.js';
-import { getLikes, postLike } from './Modules/getLikes.js';
+import getMeals from './modules/getmeals.js';
+import displayModal from './modules/popUp.js';
+import { getLikes, postLike } from './modules/getLikes.js';
 
 const mealsSection = document.querySelector('.container');
 const popUpSection = document.querySelector('.pop-up');
@@ -38,31 +38,30 @@ const initAll = async () => {
         </div>
       </div>`;
 
-      const stringItem = parser.parseFromString(string, 'text/html').body
+    const stringItem = parser.parseFromString(string, 'text/html').body
       .firstChild;
 
     const likeBtn = stringItem.querySelector('.like-btn');
     const likeEl = stringItem.querySelector('.likes');
 
     likeBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        postLike(mealWithLike.idMeal);
-        mealWithLike.likes += 1;
-        likeEl.innerHTML = `${mealWithLike.likes}`;
-        // e.target.classList.remove('far');
-        e.target.classList.add('fas');
-        likeEl.style.color = '#ff0d00';
-      });
-  
-      mealsSection.append(stringItem);
+      e.preventDefault();
+      postLike(mealWithLike.idMeal);
+      mealWithLike.likes += 1;
+      likeEl.innerHTML = `${mealWithLike.likes}`;
+      // e.target.classList.remove('far');
+      e.target.classList.add('fas');
+      likeEl.style.color = '#ff0d00';
+    });
 
-      const commentbtn = stringItem.querySelector('.commentBtn');
+    mealsSection.append(stringItem);
+
+    const commentbtn = stringItem.querySelector('.commentBtn');
     commentbtn.addEventListener('click', (e) => {
       e.preventDefault();
       popUpSection.style.display = 'flex';
       displayModal(mealWithLike.idMeal);
     });
-
   });
 };
 
