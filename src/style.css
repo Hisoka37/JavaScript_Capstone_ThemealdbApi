@@ -40,6 +40,7 @@ header {
 #logo {
   content: url('./assets/logo.png');
   width: 5rem;
+  
 }
 
 .copyrights {
