@@ -66,7 +66,6 @@ header {
 }
 
 .pop-up {
-  display: none;
   /* display: flex; */
   justify-content: center;
   border: 1px solid;
@@ -247,4 +246,85 @@ footer {
   float: left;
   overflow: auto;
   display: none;
+}
+
+.logo {
+  width: 10rem;
+}
+
+.close {
+  float: right;
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  width: 60%;
+  height: 90vh;
+  padding: 30px 50px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  overflow-y: scroll;
+  background-color: #e5e5e5;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.meal-popup-item{
+  font-size: 20px;
+}
+
+.meal-popup-description {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  font-size: 1.1em;
+  padding: 2.5em 0;
+  gap: 12px;
+}
+
+h3 {
+  font-size: 2em;
+  padding: 2em 0 1em 0;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.meal-popup-description b {
+  color: #000;
+  letter-spacing: 6px;
+  font-size: 1.3em;
+}
+
+.info-links button {
+  padding: 6px;
+  background-color: white;
+}
+
+.info-links a {
+  text-decoration: none;
+  color: #e1362c;
+  background-color: transparent;
+}
+
+.meal-popup-description ul {
+  list-style-type: circle;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.meal-popup-description li {
+  letter-spacing: 3px;
+  font-style: italic;
+  color: #000;
 }

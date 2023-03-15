@@ -13,21 +13,21 @@ const displayModal = async (idMeal) => {
 
   mealInfo(idMeal).then((meal) => {
     const string = `
-    <div class="popup-container">
+    <div class="modal-container">
       <div class="modal-popup">
         <i class="fa-solid fa-xmark close"></i>
-        <div class="modal-info">
+        <div class="item-info">
           <img src=${
   meal.meals[0].strMealThumb
 } alt="Thumbnail" class="modal-popup-img">  
-          <h3 class="meal-title">${meal.meals[0].strMeal}</h3>
-          <div class="more-info-links">
+          <h3 class="meal-popup-item">${meal.meals[0].strMeal}</h3>
+          <div class="info-links">
             <button> <a href="${
   meal.meals[0].strSource
 }" target="_blank"> Source</a></button>
             
           </div>
-          <div class="meal-description">    
+          <div class="meal-popup-description">    
             <p><b> Food Ingredients </b></p>
             <ul>
               <li>${meal.meals[0].strIngredient1}: 
@@ -51,7 +51,7 @@ const displayModal = async (idMeal) => {
           </div>
         </div>
   
-        
+      
       </div>`;
 
     const stringItem = parser.parseFromString(string, 'text/html').body
@@ -61,7 +61,8 @@ const displayModal = async (idMeal) => {
     const closeBtn = stringItem.querySelector('.close');
     closeBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      popUpSection.classList.add('hidden');
+      // popUpSection.classList.add('hidden');
+      popUpSection.style.display = 'none';
     });
   });
 };
