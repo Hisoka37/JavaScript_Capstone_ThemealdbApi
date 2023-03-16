@@ -23,14 +23,14 @@ const initAll = async () => {
     };
   });
 
-  combinedArray.forEach((mealWithLike) => {
+  combinedArray.forEach((likedMeals) => {
     const string = `
       <div class="mealCard">
-        <img src="${mealWithLike.strMealThumb}" alt="meal" class="mealImg">
+        <img src="${likedMeals.strMealThumb}" alt="meal" class="mealImg">
         <div class="card">
-            <h5 class="meal-title">${mealWithLike.strMeal}</h5>
-            <div class="like m-0" id="${mealWithLike.idMeal}">
-              <p class='likes m-0'>${mealWithLike.likes}</p>
+            <h5 class="meal-title">${likedMeals.strMeal}</h5>
+            <div class="like" id="${likedMeals.idMeal}">
+              <p class='likes'>${likedMeals.likes}</p>
               <i class="fa-regular fa-heart like-btn"></i> 
             </div>
           </div>
@@ -38,18 +38,16 @@ const initAll = async () => {
         </div>
       </div>`;
 
-    const stringItem = parser.parseFromString(string, 'text/html').body
-      .firstChild;
+    const stringItem = parser.parseFromString(string, 'text/html').body.firstChild;
 
     const likeBtn = stringItem.querySelector('.like-btn');
     const likeEl = stringItem.querySelector('.likes');
 
     likeBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      postLike(mealWithLike.idMeal);
-      mealWithLike.likes += 1;
-      likeEl.innerHTML = `${mealWithLike.likes}`;
-      // e.target.classList.remove('far');
+      postLike(likedMeals.idMeal);
+      likedMeals.likes += 1;
+      likeEl.innerHTML = `${likedMeals.likes}`;
       e.target.classList.add('fas');
       likeEl.style.color = '#ff0d00';
     });
@@ -60,7 +58,7 @@ const initAll = async () => {
     commentbtn.addEventListener('click', (e) => {
       e.preventDefault();
       popUpSection.style.display = 'flex';
-      displayModal(mealWithLike.idMeal);
+      displayModal(likedMeals.idMeal);
     });
   });
 };
