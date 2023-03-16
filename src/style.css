@@ -48,6 +48,26 @@ header {
   width: 5rem;
 }
 
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 70px;
+}
+
+.intro h1 {
+  font-size: 2rem;
+}
+
+.intro p {
+  font-size: 1.3rem;
+}
+
+.mealscounter {
+  color: #e1362c;
+  font-size: 2rem;
+}
+
 .copyrights {
   color: antiquewhite;
   font-size: 25px;
@@ -60,11 +80,8 @@ header {
 }
 
 .pop-container {
-  /* border: 1px solid blueviolet; */
   width: 80%;
   background-color: azure;
-
-  /* height: fit-content; */
   margin-top: -5rem;
   position: absolute;
   z-index: 1;
@@ -72,7 +89,6 @@ header {
 }
 
 .pop-up {
-  /* display: flex; */
   justify-content: center;
   border: 1px solid;
   width: 75%;
@@ -100,10 +116,6 @@ ul {
   background-repeat: no-repeat;
 }
 
-/* .pop-info {
-  border: 1px solid red;
-} */
-
 h3 {
   font-size: 2em;
   padding: 2em 0 1em 0;
@@ -116,7 +128,6 @@ h3 {
 }
 
 .meal-info {
-  /* border: 1px solid blue; */
   height: 8rem;
   display: flex;
   justify-content: center;
@@ -153,11 +164,6 @@ h3 {
   width: 50%;
   margin-top: 2rem;
   margin-left: 20rem;
-}
-
-main {
-  min-height: 100%;
-  padding-bottom: 10%;
 }
 
 .container {
@@ -266,6 +272,11 @@ footer {
 .popup-img {
   width: 40%;
   border-radius: 10px;
+  border: 2px solid #fff;
+  box-shadow: 10px 10px 5px #ccc;
+  -moz-box-shadow: 10px 10px 5px #ccc;
+  -webkit-box-shadow: 10px 10px 5px #ccc;
+  -khtml-box-shadow: 10px 10px 5px #ccc;
 }
 
 .modal-container {
@@ -274,7 +285,7 @@ footer {
   align-items: center;
   z-index: 10;
   width: 90%;
-  height: 95%;
+  height: 100%;
   padding: 30px 50px;
   position: fixed;
   top: 50%;
@@ -283,6 +294,10 @@ footer {
   border-radius: 10px;
   overflow-y: scroll;
   background-color: antiquewhite;
+}
+
+.modal-container::-webkit-scrollbar {
+  width: 0.5em;
 }
 
 .item-info {
@@ -311,12 +326,26 @@ footer {
 }
 
 .info-links button {
-  padding: 6px;
-  background-color: white;
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
 .meal-popup-description ul {
-  list-style-type: circle;
+  list-style-type: lower-roman;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -347,7 +376,6 @@ footer {
 }
 
 .comments {
-  /* border: 1px solid red; */
   width: 20%;
   margin: 0 auto;
   padding: 0;
@@ -356,21 +384,13 @@ footer {
 }
 
 .commented {
-  /* border: 1px solid; */
+  font-size: 1.6rem;
   display: flex;
-
-  /* justify-content: space-evenly; */
+  margin-left: 20rem;
   align-items: center;
   text-align: center;
-  gap: 5rem;
-}
-
-.username {
-  width: 6rem;
-}
-
-.message {
-  width: 6rem;
+  gap: 1rem;
+  width: 60%;
 }
 
 form {
@@ -380,7 +400,42 @@ form {
   gap: 1rem;
 }
 
-.user-name,
+.user-name {
+  width: 30%;
+  background: none;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  border: none;
+  border-radius: 0;
+}
+
 .user-comment {
   width: 30%;
+  height: 300px;
+  background: none;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  border: none;
+  border-radius: 0;
+}
+
+.submit-btn {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
