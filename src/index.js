@@ -2,9 +2,11 @@ import './style.css';
 import getMeals from './modules/getmeals.js';
 import displayModal from './modules/popUp.js';
 import { getLikes, postLike } from './modules/getLikes.js';
+import mealCounter from './modules/mealCounter.js';
 
 const mealsSection = document.querySelector('.container');
 const popUpSection = document.querySelector('.pop-up');
+
 const parser = new DOMParser();
 
 const initAll = async () => {
@@ -61,6 +63,9 @@ const initAll = async () => {
       displayModal(likedMeals.idMeal);
     });
   });
+  const allItems = mealCounter();
+  const generatedmeals = document.querySelector('.mealscounter');
+  generatedmeals.innerHTML = `(${allItems})`;
 };
 
 initAll();

@@ -1,5 +1,5 @@
 import { getComments, postComment } from './getComments.js';
-import commentCounter from '../counters/commentsCounter.js';
+import commentCounter from './commentsCounter.js';
 
 const mealData = async (idMeal) => {
   const information = await fetch(
@@ -63,7 +63,6 @@ const displayModal = async (idMeal) => {
               <div class="username"><b>${comment.username}:</b></div>
               <div class="message">${comment.comment}</div>
             </div>
-          <div class="date">${comment.creation_date}</div>
           </div>`).join('') : ''}
       </div>
       <form class="comments-posted">
