@@ -1,28 +1,68 @@
 import './style.css';
+import getMeals from './modules/getmeals.js';
+import displayModal from './modules/popUp.js';
+import { getLikes, postLike } from './modules/getLikes.js';
 
-const Items = document.querySelector('.container');
+const mealsSection = document.querySelector('.container');
+const popUpSection = document.querySelector('.pop-up');
+const parser = new DOMParser();
 
-const getMeals = async () => {
-  const response = await fetch('https://www.themealdb.com/api/json/v1/1/filter.php?a=Chinese', {
+const initAll = async () => {
+  const likesArray = await getLikes();
+  const mealsArray = await getMeals();
+
+  const combinedArray = mealsArray.meals.map((meal) => {
+    const likeForThisMeal = likesArray.filter(
+      (likeObj) => likeObj.item_id === meal.idMeal,
+    );
+    return {
+      strMealThumb: meal.strMealThumb,
+      strMeal: meal.strMeal,
+      idMeal: meal.idMeal,
+      likes: likeForThisMeal.length === 0 ? 0 : likeForThisMeal[0].likes,
+    };
   });
-  const responseData = await response.json();
-  const mealsList = responseData.meals;
-  console.log(mealsList);
 
-  const displaymealsList = mealsList.map(
-    (index) => `
-   
-              <div class="mealCard" id="${index.idMeal}">
-            <img src="${index.strMealThumb}" class="mealImg" alt="${index.strMeal}">
-            <div class="card">
-              <h5 class="meal-title">${index.strMeal}</h5>
-              <i class="fa-regular fa-heart"></i>             
-              <span class="Likes">0</span>           
+  combinedArray.forEach((mealWithLike) => {
+    const string = `
+      <div class="mealCard">
+        <img src="${mealWithLike.strMealThumb}" alt="meal" class="mealImg">
+        <div class="card">
+            <h5 class="meal-title">${mealWithLike.strMeal}</h5>
+            <div class="like m-0" id="${mealWithLike.idMeal}">
+              <p class='likes m-0'>${mealWithLike.likes}</p>
+              <i class="fa-regular fa-heart like-btn"></i> 
+            </div>
           </div>
           <button type="button" class="commentBtn">Comments</button>
-        </div>`,
-  );
+        </div>
+      </div>`;
 
-  Items.innerHTML = displaymealsList.join(' ');
+    const stringItem = parser.parseFromString(string, 'text/html').body
+      .firstChild;
+
+    const likeBtn = stringItem.querySelector('.like-btn');
+    const likeEl = stringItem.querySelector('.likes');
+
+    likeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      postLike(mealWithLike.idMeal);
+      mealWithLike.likes += 1;
+      likeEl.innerHTML = `${mealWithLike.likes}`;
+      // e.target.classList.remove('far');
+      e.target.classList.add('fas');
+      likeEl.style.color = '#ff0d00';
+    });
+
+    mealsSection.append(stringItem);
+
+    const commentbtn = stringItem.querySelector('.commentBtn');
+    commentbtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      popUpSection.style.display = 'flex';
+      displayModal(mealWithLike.idMeal);
+    });
+  });
 };
-getMeals();
+
+initAll();
