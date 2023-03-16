@@ -92,11 +92,6 @@ const displayModal = async (idMeal) => {
       const user = formData.get('username');
       const message = formData.get('comment');
       postComment(idMeal, user, message);
-      // let today = new Date();
-      // const d = String(today.getDate()).padStart(2, '0');
-      // const m = String(today.getMonth() + 1).padStart(2, '0');
-      // const y = String(today.getFullYear());
-      // today = `${d}/${m}/${y}`;
       const commentText = `
       <div class="comment">
         <div class="commented">
