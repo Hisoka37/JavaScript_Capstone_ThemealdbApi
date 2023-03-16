@@ -1,17 +1,21 @@
-const mealInfo = async (idMeal) => {
+import { getComments, postComment } from './getComments.js';
+import commentCounter from '../counters/commentsCounter.js';
+
+const mealData = async (idMeal) => {
   const information = await fetch(
     `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`,
   );
-  const infoJSON = await information.json();
-  return infoJSON;
+  const dataJson = await information.json();
+  return dataJson;
 };
 const popUpSection = document.querySelector('.pop-up');
 const parser = new DOMParser();
 
 const displayModal = async (idMeal) => {
   popUpSection.innerHTML = '<div class="backdrop"></div>';
+  const commentItems = await getComments(idMeal);
 
-  mealInfo(idMeal).then((meal) => {
+  mealData(idMeal).then((meal) => {
     const string = `
     <div class="modal-container">
       <div class="modal-popup">
@@ -50,19 +54,61 @@ const displayModal = async (idMeal) => {
               </div>
           </div>
         </div>
-  
-      
+
+        <h3 class='count'>Comments(<b class='comments'>0</b>)</h3>
+        <div class='user-comments'>
+        ${commentItems ? commentItems.map((comment) => `
+        <div class="comment">
+            <div class="commented">
+              <div class="username"><b>${comment.username}:</b></div>
+              <div class="message">${comment.comment}</div>
+            </div>
+          <div class="date">${comment.creation_date}</div>
+          </div>`).join('') : ''}
+      </div>
+      <form class="comments-posted">
+            <h3>Your Comment</h3>
+            <input type="text" name="username" class="user-name" placeholder="your name" required>
+            <textarea class="user-comment" name="comment" placeholder="your comment" required></textarea>
+            <button type="submit" class="submit-btn">Submit</button>
+          </form>
+        </div>
       </div>`;
-
-    const stringItem = parser.parseFromString(string, 'text/html').body
-      .firstChild;
+    const stringItem = parser.parseFromString(string, 'text/html').body.firstChild;
     popUpSection.append(stringItem);
-
     const closeBtn = stringItem.querySelector('.close');
     closeBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      // popUpSection.classList.add('hidden');
       popUpSection.style.display = 'none';
+    });
+    const form = stringItem.querySelector('form');
+    const commentContainer = document.querySelector('.user-comments');
+    const counter = stringItem.querySelector('.comments');
+
+    counter.innerHTML = `${commentCounter()}`;
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const user = formData.get('username');
+      const message = formData.get('comment');
+      postComment(idMeal, user, message);
+      // let today = new Date();
+      // const d = String(today.getDate()).padStart(2, '0');
+      // const m = String(today.getMonth() + 1).padStart(2, '0');
+      // const y = String(today.getFullYear());
+      // today = `${d}/${m}/${y}`;
+      const commentText = `
+      <div class="comment">
+        <div class="commented">
+          <div class="username"><b>${user}:</b></div>
+          <div class="message">${message}</div>
+        </div>
+        
+      </div>`;
+      const userComment = parser.parseFromString(commentText, 'text/html').body.firstChild;
+      commentContainer.append(userComment);
+      form.reset();
+      counter.innerHTML = `${commentCounter()}`;
     });
   });
 };
