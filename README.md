@@ -47,6 +47,13 @@ HTML5 and css3 which are the latest versions and JavaScript were used in this pr
   </ul>
 </details>
 
+<details>
+  <summary>API</summary>
+  <ul>
+    <li><a href="https://www.themealdb.com/api.php">TheMealDB</a></li>
+  </ul>
+</details>
+
 ### Key Features <a name="key-features"></a>
 
 
